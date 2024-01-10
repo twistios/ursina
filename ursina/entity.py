@@ -1132,6 +1132,14 @@ class Entity(NodePath, metaclass=PostInitCaller):
         return sequence
 
     def animate_position(self, value, duration=.1, **kwargs):
+        """
+        Animates the position of the entity.
+
+        Args:
+            value
+            duration (float): Duration of the Animation in seconds
+            **kwargs (dict): Arguments passed to the animate-call
+        """
         x = self.animate('x', value[0], duration, **kwargs)
         y = self.animate('y', value[1], duration, **kwargs)
         z = None
@@ -1140,12 +1148,28 @@ class Entity(NodePath, metaclass=PostInitCaller):
         return x, y, z
 
     def animate_rotation(self, value, duration=.1, **kwargs):
+        """
+        Animates the rotation of the entity.
+
+        Args:
+            value
+            duration (float): Duration of the Animation in seconds
+            **kwargs (dict): Arguments passed to the animate-call
+        """
         x = self.animate('rotation_x', value[0], duration, **kwargs)
         y = self.animate('rotation_y', value[1], duration, **kwargs)
         z = self.animate('rotation_z', value[2], duration, **kwargs)
         return x, y, z
 
     def animate_scale(self, value, duration=.1, **kwargs):
+        """
+        Animates the scale of the entity.
+
+        Args:
+            value
+            duration (float): Duration of the Animation in seconds
+            **kwargs (dict): Arguments passed to the animate-call
+        """
         if isinstance(value, (int, float, complex)):
             value = Vec3(value, value, value)
         elif isinstance(value, tuple) and len(value) == 2:
@@ -1188,6 +1212,16 @@ class Entity(NodePath, metaclass=PostInitCaller):
         return self.shake_sequence
 
     def animate_color(self, value, duration=.1, interrupt='finish', unscaled=False, **kwargs):
+        """
+        Animates the color of the entity.
+
+        Args:
+            value
+            duration (float): Duration of the animation in seconds.
+            interrupt (str): "kill" or "finish"
+            unscaled (bool)
+            **kwargs: Arguments passed to the animate-call
+        """
         return self.animate('color', value, duration, interrupt=interrupt, unscaled=unscaled, **kwargs)
 
     def fade_out(self, value=0, duration=.5, unscaled=False, **kwargs):
