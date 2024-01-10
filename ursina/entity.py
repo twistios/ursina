@@ -332,6 +332,18 @@ class Entity(NodePath, metaclass=PostInitCaller):
         return getattr(self, '_collider', None)
 
     def collider_setter(self, value):  # set to 'box'/'sphere'/'capsule'/'mesh' for auto fitted collider.
+        """
+        Sets the collider.
+
+        Valid values are:
+
+        - None, Collider-/Mesh-object
+
+        - String: 'box'/'sphere'/'capsule'/'mesh' or a path-like
+
+        Args:
+            value (None, str, Collider, Mesh):
+        """
         if value is None and self.collider:
             self._collider.remove()
             self._collider = None
@@ -682,6 +694,12 @@ class Entity(NodePath, metaclass=PostInitCaller):
         return self._shader
 
     def shader_setter(self, value):
+        """
+        Sets the shader of the entity.
+
+        Args:
+            value (None, Panda3dShader, str, Shader):
+        """
         if value is None:
             self._shader = value
             self.setShaderAuto()
