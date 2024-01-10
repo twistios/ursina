@@ -1078,6 +1078,22 @@ class Entity(NodePath, metaclass=PostInitCaller):
     # ------------
     def animate(self, name, value, duration=.1, delay=0, curve=curve.in_expo, loop=False, resolution=None,
                 interrupt='kill', time_step=None, unscaled=False, auto_play=True, auto_destroy=True):
+        """
+        Animates the entity.
+        Args:
+            name (str): The name of the animation
+            value
+            duration (float): The duration of the animation in seconds
+            delay (float): The delay until this animation is started in seconds
+            curve
+            loop (bool, optional): Defaults to False.
+            resolution: The resolution of the animation step
+            interrupt (str): "kill" or "finish"
+            time_step
+            unscaled (bool, optional): Defaults to False
+            auto_play (bool, optional): Defaults to True.
+            auto_destroy (bool, optional): Defaults to True.
+        """
         if duration == 0 and delay == 0:
             setattr(self, name, value)
             return None
